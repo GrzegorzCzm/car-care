@@ -6,7 +6,7 @@ class Home extends Component {
     return (
       <div className="App">
         <p className="App-intro">
-          Car Care..
+          Car Care...
         </p>
       </div>
     );
