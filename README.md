@@ -35,3 +35,7 @@ ________________________________________________________________________________
 
 Project was build using starter kit:(https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
+
+____________________________________________________________________________________
+
+UI Library used in project: https://material-ui.com/
