@@ -1,34 +1,45 @@
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import {bindActionCreators} from 'redux'
+
 import Drawer from '@material-ui/core/Drawer';
 
+import {toggleMenu} from '../../../actions/navigation';
 
 class Menu extends Component {
-
-  
 
 constructor(props) {
   super(props);
   this.state = { 
-    isDrawerOpen: true 
+    isDrawerOpen: props.navigation.isMenuShown 
   };
-  this.toggleDrawer = this.toggleDrawer.bind(this);
 }
 
 
-  toggleDrawer(open){
-    this.setState({
-      isDrawerOpen: open,
-    });
+  componentWillReceiveProps(nextProps){
+    this.setState({ isDrawerOpen: nextProps.navigation.isMenuShown});
   }
 
   render() {
     return (
-        <Drawer open={this.state.isDrawerOpen} onClose={() => this.toggleDrawer(false)}>
+        <Drawer open={this.state.isDrawerOpen} onClose={this.props.toggleMenu}>
             some position
         </Drawer>
     );
   }
 }
 
-export default Menu;
+
+function mapStateToProps(state) {
+  return {
+    navigation: state.navigation
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({toggleMenu}, dispatch);
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
