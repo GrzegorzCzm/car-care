@@ -6,6 +6,7 @@ export default function (state = { isMenuShown: false }, action) {
 
         case TOGGLE_MENU:
             return { ...state, isMenuShown: !state.isMenuShown};
+            default:
+            return state;
     }
-    return state
 }
