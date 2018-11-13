@@ -9,9 +9,9 @@ import './css/App.css';
 import Home from './components/Home';
 import Menu from './components/assets/general/Menu';
 import AppTopBar from './components/assets/general/AppTopBar';
-import Expenses from './components/assets/Expenses';
-import Refueling from './components/assets/Refueling';
-import Settings from './components/assets/Settings';
+import Expenses from './components/assets/expenses/Expenses';
+import Refueling from './components/assets/refueling/Refueling';
+import Settings from './components/assets/settings/Settings';
 
 class App extends Component {
 
