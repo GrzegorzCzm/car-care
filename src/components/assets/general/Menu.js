@@ -1,12 +1,22 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
+
 import { bindActionCreators } from 'redux';
 import Drawer from '@material-ui/core/Drawer';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 
 import { toggleMenu } from '../../../actions/navigation';
+
+const menuContent = [
+  { label: "Home", path: "/" },
+  { label: "Expenses", path: "/expenses" },
+  { label: "Refueling", path: "/refueling" },
+  { label: "Settings", path: "/settings" }
+];
+
 
 class Menu extends Component {
 
@@ -26,9 +36,13 @@ class Menu extends Component {
     return (
       <Drawer open={this.state.isDrawerOpen} onClose={this.props.toggleMenu}>
         <MenuList>
-          <MenuItem>Profile</MenuItem>
-          <MenuItem>My account</MenuItem>
-          <MenuItem>Logout</MenuItem>
+          {menuContent.map(menuItem =>
+            <Link key={menuItem.label} to={menuItem.path} style={{ textDecoration: 'none' }}>
+              <MenuItem onClick={this.props.toggleMenu}>
+                {menuItem.label}
+              </MenuItem>
+            </Link >
+          )}
         </MenuList>
       </Drawer>
     );

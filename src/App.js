@@ -9,6 +9,9 @@ import './css/App.css';
 import Home from './components/Home';
 import Menu from './components/assets/general/Menu';
 import AppTopBar from './components/assets/general/AppTopBar';
+import Expenses from './components/assets/Expenses';
+import Refueling from './components/assets/Refueling';
+import Settings from './components/assets/Settings';
 
 class App extends Component {
 
@@ -19,6 +22,11 @@ class App extends Component {
           <Menu />
           <AppTopBar />
           <Route exact path="/" component={Home} />
+          <Route exact path="/expenses" component={Expenses} />
+          <Route exact path="/refueling" component={Refueling} />
+          <Route exact path="/settings" component={Settings} />
+
+
         </div>
       </Router>
     );
