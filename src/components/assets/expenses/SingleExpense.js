@@ -21,7 +21,8 @@ const styles = {
 
 
 const SingleExpense = props => {
-  let { id, date, item, cost, description, address, classes } = props
+  let { expense, classes} = props;
+  let { id, date, item, cost, description, address } = expense;
   return (
     <Card className={classes.card}>
       <CardMedia
