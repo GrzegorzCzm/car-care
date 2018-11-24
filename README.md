@@ -48,7 +48,7 @@ ________________________________________________________________________________
 
 Nameing convention:
 
-branch names: <feat/impl/test/adm><YT ID>-<description>
+branch names: <feat/impl/test/adm>_<YT ID>_<description>
 commits: 
     <commit comment> #<YT-ID> [<YT-Command>]
     <from new line comment visible as YT comment>
