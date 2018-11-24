@@ -31,6 +31,9 @@ Revision ${revision}
 
 You can use the ${revision} a placeholder in a commit message. The placeholder is be replaced with the actual hash of the VCS commit.
 
+Example of commands:
+https://www.jetbrains.com/help/youtrack/standalone/Apply-Commands-in-VCS-Commits.html
+
 _____________________________________________________________________________________
 
 Project was build using starter kit:(https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
@@ -39,3 +42,27 @@ Project was build using starter kit:(https://github.com/facebookincubator/create
 ____________________________________________________________________________________
 
 UI Library used in project: https://material-ui.com/
+
+
+___________________________________________________________________________________
+
+Nameing convention:
+
+branch names: <story/task><YT ID>-<description>
+commits: 
+    <commit comment> #<YT-ID> [<YT-Command>]
+    <from new line comment visible as YT comment>
+
+- first commmit on new branch can have "In Progress" command
+- last commit on branch before merg to master/story branch have to has "To Verify" command
+
+
+stories on YouTrack:
+[feat] <desc>
+
+tasks on YouTrack:
+[impl/test/adm] <desc>
+
+impl - task for implementation
+test - task for test
+adm - som administratice task
