@@ -7,6 +7,9 @@ import reducers from './reducers';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
+import FirebaseConfigurator from "./utils/dbConnector";
+const firebaseConfigurator = new FirebaseConfigurator();
+
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 ReactDOM.render(
