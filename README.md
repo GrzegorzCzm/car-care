@@ -48,7 +48,7 @@ ________________________________________________________________________________
 
 Nameing convention:
 
-branch names: <story/task><YT ID>-<description>
+branch names: <feat/impl/test/adm><YT ID>-<description>
 commits: 
     <commit comment> #<YT-ID> [<YT-Command>]
     <from new line comment visible as YT comment>
@@ -65,4 +65,4 @@ tasks on YouTrack:
 
 impl - task for implementation
 test - task for test
-adm - som administratice task
+adm - some administration task
