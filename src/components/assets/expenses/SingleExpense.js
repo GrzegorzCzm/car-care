@@ -1,56 +1,49 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
+import ExpandMore from 'mdi-material-ui/MenuDownOutline'
 
 import { withStyles } from '@material-ui/core/styles';
+import SingleExpenseDetails from './SingleExpenseDetails';
 
-
-const styles = {
+const styles = theme => ({
   card: {
     margin: 10,
   },
   map: {
     height: 40,
   },
-};
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    flexBasis: '66.66%',
+    flexShrink: 0,
+  },
+  secondaryHeading: {
+    fontSize: theme.typography.pxToRem(15),
+    color: theme.palette.text.secondary,
+  }
+});
 
 
 const SingleExpense = props => {
-  let { expense, classes} = props;
+  let { expense, classes, isExpanded, handleChange} = props;
   let { id, date, item, cost, description, address } = expense;
-  return (
-    <Card className={classes.card}>
-      <CardMedia
-      className={classes.map}
-        component="img"
-        alt="MAP"
-        height="140"
-        image="/static/images/cards/contemplative-reptile.jpg"
-        title="Contemplative Reptile"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
-          {item}
-        </Typography>
-        <Typography component="p">
-          {description}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small" color="primary">
-          {date}
-        </Button>
-        <Button size="small" color="primary">
-          Cost: {cost}
-        </Button>
 
-      </CardActions>
-    </Card>
+  return (
+    <ExpansionPanel key={id} expanded={isExpanded} onChange={() => handleChange(isExpanded, id)}>
+      <ExpansionPanelSummary expandIcon={<ExpandMore />}>
+        <Typography className={classes.heading}>{item}</Typography>
+        <Typography className={classes.secondaryHeading}>{date}</Typography>
+      </ExpansionPanelSummary>
+      <ExpansionPanelDetails>
+        <Typography>
+          <SingleExpenseDetails expense={expense}/>
+        </Typography>
+      </ExpansionPanelDetails>
+    </ExpansionPanel >
   );
 }
 
