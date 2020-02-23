@@ -50,7 +50,9 @@ function mapDispatchToProps(dispatch) {
 
 
 Menu.propTypes = {
-  navigation: PropTypes.bool.isRequired,
+  navigation: PropTypes.shape({
+    isMenuShown: PropTypes.bool.isRequired,
+  }).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);

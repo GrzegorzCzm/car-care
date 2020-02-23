@@ -1,7 +1,5 @@
 export const TOGGLE_MENU = 'TOGGLE_MENU';
 
-export function toggleMenu() {
-  return {
-    type: TOGGLE_MENU
-  };
-}
+export const toggleMenu = () => ({
+  type: TOGGLE_MENU,
+});
