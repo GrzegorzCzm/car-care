@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { bindActionCreators } from 'redux';
 import Drawer from '@material-ui/core/Drawer';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
@@ -18,9 +17,9 @@ const menuContent = [
 ];
 
 const Menu = (props) => {
-  const { navigation } = props;
+  const { navigation, toggleMenuAction } = props;
   return (
-    <Drawer open={navigation.isMenuShown} onClose={toggleMenu}>
+    <Drawer open={navigation.isMenuShown} onClose={toggleMenuAction}>
       <MenuList>
         {menuContent.map((menuItem) => (
           <Link
@@ -28,7 +27,7 @@ const Menu = (props) => {
             to={menuItem.path}
             style={{ textDecoration: 'none' }}
           >
-            <MenuItem onClick={toggleMenu}>
+            <MenuItem onClick={toggleMenuAction}>
               {menuItem.label}
             </MenuItem>
           </Link>
@@ -38,21 +37,19 @@ const Menu = (props) => {
   );
 };
 
-function mapStateToProps(state) {
-  return {
-    navigation: state.navigation,
-  };
-}
+const mapStateToProps = (state) => ({
+  navigation: state.navigation,
+});
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ toggleMenu }, dispatch);
-}
-
+const mapDispatchToProps = (dispatch) => ({
+  toggleMenuAction: () => dispatch(toggleMenu()),
+});
 
 Menu.propTypes = {
   navigation: PropTypes.shape({
     isMenuShown: PropTypes.bool.isRequired,
   }).isRequired,
+  toggleMenuAction: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);

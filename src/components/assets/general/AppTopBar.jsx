@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -22,8 +20,8 @@ const AppTopBar = () => (
   </AppBar>
 );
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ toggleMenu }, dispatch);
-}
+const mapDispatchToProps = (dispatch) => ({
+  toggleMenu: () => dispatch(toggleMenu()),
+});
 
 export default connect(null, mapDispatchToProps)(AppTopBar);
