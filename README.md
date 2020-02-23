@@ -66,3 +66,13 @@ tasks on YouTrack:
 impl - task for implementation
 test - task for test
 adm - some administration task
+
+
+_____________________________________________________________________________________
+
+ISSUES: 
+
+
+issue 1: node-pre-gyp install --fallback-to-build
+solution: npm --build-from-source install bcrypt
+

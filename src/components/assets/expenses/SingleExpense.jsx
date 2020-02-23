@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -9,7 +9,6 @@ import Typography from '@material-ui/core/Typography';
 
 import { withStyles } from '@material-ui/core/styles';
 
-
 const styles = {
   card: {
     margin: 10,
@@ -19,14 +18,17 @@ const styles = {
   },
 };
 
+const SingleExpense = (props) => {
+  const {
+    expense: {
+      id, date, item, cost, description,
+    },
+  } = props;
 
-const SingleExpense = props => {
-  let { expense, classes} = props;
-  let { id, date, item, cost, description, address } = expense;
   return (
-    <Card className={classes.card}>
+    <Card className={styles.card} key={id}>
       <CardMedia
-      className={classes.map}
+        className={styles.map}
         component="img"
         alt="MAP"
         height="140"
@@ -37,26 +39,29 @@ const SingleExpense = props => {
         <Typography gutterBottom variant="h5" component="h2">
           {item}
         </Typography>
-        <Typography component="p">
-          {description}
-        </Typography>
+        <Typography component="p">{description}</Typography>
       </CardContent>
       <CardActions>
         <Button size="small" color="primary">
           {date}
         </Button>
         <Button size="small" color="primary">
-          Cost: {cost}
+          Cost:
+          {cost}
         </Button>
-
       </CardActions>
     </Card>
   );
-}
-
+};
 
 SingleExpense.propTypes = {
-  classes: PropTypes.object.isRequired,
+  expense: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    date: PropTypes.string.isRequired,
+    item: PropTypes.string.isRequired,
+    cost: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default withStyles(styles)(SingleExpense);
