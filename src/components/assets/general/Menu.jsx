@@ -42,7 +42,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  toggleMenuAction: () => dispatch(toggleMenu()),
+  toggleMenuAction: () => { dispatch(toggleMenu()); },
 });
 
 Menu.propTypes = {

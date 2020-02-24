@@ -21,7 +21,7 @@ const AppTopBar = () => (
 );
 
 const mapDispatchToProps = (dispatch) => ({
-  toggleMenu: () => dispatch(toggleMenu()),
+  toggleMenu: () => { dispatch(toggleMenu()); },
 });
 
 export default connect(null, mapDispatchToProps)(AppTopBar);
