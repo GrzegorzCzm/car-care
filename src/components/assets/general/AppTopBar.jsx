@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -9,19 +10,26 @@ import Menu from 'mdi-material-ui/Menu';
 import { toggleMenu } from '../../../actions/navigation';
 
 
-const AppTopBar = () => (
-  <AppBar position="static" color="default">
-    <Toolbar>
-      <Menu onClick={toggleMenu} />
-      <Typography variant="title" color="inherit">
-        Car Care
-      </Typography>
-    </Toolbar>
-  </AppBar>
-);
+const AppTopBar = (props) => {
+  const { toggleMenuAction } = props;
+  return (
+    <AppBar position="static" color="default">
+      <Toolbar>
+        <Menu onClick={toggleMenuAction} />
+        <Typography variant="title" color="inherit">
+          Car Care
+        </Typography>
+      </Toolbar>
+    </AppBar>
+  );
+};
 
 const mapDispatchToProps = (dispatch) => ({
-  toggleMenu: () => { dispatch(toggleMenu()); },
+  toggleMenuAction: () => { dispatch(toggleMenu()); },
 });
+
+AppTopBar.propTypes = {
+  toggleMenuAction: PropTypes.func.isRequired,
+};
 
 export default connect(null, mapDispatchToProps)(AppTopBar);
