@@ -7,22 +7,12 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMore from 'mdi-material-ui/MenuDownOutline';
 import SingleExpense from './SingleExpense';
+import expenses from '../../../tests/data/testData';
 
-const expenses = [
-  {
-    id: 0, date: '2018-08-19', item: 'tires', cost: 35, description: 'some details here', address: 'dummy address',
-  },
-  {
-    id: 1, date: '2018-08-13', item: 'wheels', cost: 85, description: 'some more details here', address: 'dummy second address',
-  },
-  {
-    id: 2, date: '2018-07-10', item: 'wheels', cost: 85, description: 'some more details here', address: 'dummy third address',
-  },
-];
 
 const styles = (theme) => ({
   root: {
-    width: '100%',
+    width: '70%',
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
