@@ -13,10 +13,10 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = () => ({
   card: {
-    margin: 10,
+    margin: 5,
   },
   map: {
-    height: 40,
+    height: 140,
   },
 
 });
@@ -36,7 +36,6 @@ const SingleExpenseDetails = (props) => {
           className={classes.map}
           component="img"
           alt="MAP"
-          height="140"
           image="/static/images/cards/contemplative-reptile.jpg"
           title="Contemplative Reptile"
         />

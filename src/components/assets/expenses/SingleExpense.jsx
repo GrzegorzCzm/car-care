@@ -1,20 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Box from '@material-ui/core/Box';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
+
 import ExpandMore from 'mdi-material-ui/MenuDownOutline';
 
-import { withStyles } from '@material-ui/core/styles';
 import SingleExpenseDetails from './SingleExpenseDetails';
+
 
 const styles = (theme) => ({
   card: {
     margin: 10,
-  },
-  map: {
-    height: 40,
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    },
+    [theme.breakpoints.between('sm', 'md')]: {
+      width: 600,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 600,
+    },
+    alignSelf: 'center',
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -22,28 +32,30 @@ const styles = (theme) => ({
     flexShrink: 0,
   },
   secondaryHeading: {
-    fontSize: theme.typography.pxToRem(15),
+    fontSize: theme.typography.pxToRem(10),
     color: theme.palette.text.secondary,
   },
 });
 
 
 const SingleExpense = (props) => {
-  const { expense } = props;
+  const { expense, classes } = props;
   const { id, date, item } = expense;
 
   return (
-    <ExpansionPanel key={id}>
-      <ExpansionPanelSummary expandIcon={<ExpandMore />}>
-        <Typography className={styles.heading}>{item}</Typography>
-        <Typography className={styles.secondaryHeading}>{date}</Typography>
-      </ExpansionPanelSummary>
-      <ExpansionPanelDetails>
-        <Typography>
-          <SingleExpenseDetails expense={expense} />
-        </Typography>
-      </ExpansionPanelDetails>
-    </ExpansionPanel>
+    <Box key={id} className={classes.card}>
+      <ExpansionPanel>
+        <ExpansionPanelSummary expandIcon={<ExpandMore />}>
+          <Typography className={classes.heading}>{item}</Typography>
+          <Typography className={classes.secondaryHeading}>{date}</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <Typography>
+            <SingleExpenseDetails expense={expense} />
+          </Typography>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
+    </Box>
   );
 };
 
@@ -55,6 +67,12 @@ SingleExpense.propTypes = {
     cost: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,
+  classes: PropTypes.shape({
+    card: PropTypes.string.isRequired,
+    heading: PropTypes.string.isRequired,
+    secondaryHeading: PropTypes.string.isRequired,
+  }).isRequired,
+
 };
 
 export default withStyles(styles)(SingleExpense);

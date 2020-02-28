@@ -76,3 +76,14 @@ ISSUES:
 issue 1: node-pre-gyp install --fallback-to-build
 solution: npm --build-from-source install bcrypt
 
+
+
+
+____________________________________________________________________________
+
+Styles breakpoints sizing
+
+value         |0px     600px    960px    1280px   1920px
+key           |xs      sm       md       lg       xl
+screen width  |--------|--------|--------|--------|-------->
+range         |   xs   |   sm   |   md   |   lg   |   xl
