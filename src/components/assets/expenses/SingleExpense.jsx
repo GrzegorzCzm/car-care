@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Box from '@material-ui/core/Box';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import Avatar from '@material-ui/core/Avatar';
+import Paper from '@material-ui/core/Paper';
+import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-
-import ExpandMore from 'mdi-material-ui/MenuDownOutline';
-
-import SingleExpenseDetails from './SingleExpenseDetails';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Box } from '@material-ui/core';
 
 
 const styles = (theme) => ({
@@ -35,27 +35,74 @@ const styles = (theme) => ({
     fontSize: theme.typography.pxToRem(10),
     color: theme.palette.text.secondary,
   },
+  map: {
+    [theme.breakpoints.down('sm')]: {
+      width: 300,
+      height: 150,
+    },
+    [theme.breakpoints.between('sm', 'md')]: {
+      width: 300,
+      height: 300,
+
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 300,
+      height: 300,
+    },
+  },
+  details: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignContent: 'stretch',
+  },
+  detailsText: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+  },
 });
 
 
 const SingleExpense = (props) => {
   const { expense, classes } = props;
-  const { id, date, item } = expense;
+  const {
+    id, date, item, cost, address, description,
+  } = expense;
 
   return (
-    <Box key={id} className={classes.card}>
-      <ExpansionPanel>
-        <ExpansionPanelSummary expandIcon={<ExpandMore />}>
-          <Typography className={classes.heading}>{item}</Typography>
-          <Typography className={classes.secondaryHeading}>{date}</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            <SingleExpenseDetails expense={expense} />
+    <Card key={id} className={classes.card}>
+      <CardHeader
+        avatar={(
+          <Avatar>
+            {item.slice(0, 1)}
+          </Avatar>
+        )}
+        action={(
+          <IconButton aria-label="settings">
+            <MoreVertIcon />
+          </IconButton>
+        )}
+        title={item}
+        subheader={`${date}  cost: ${cost}`}
+      />
+      <CardContent className={classes.details}>
+        <Paper
+          className={classes.map}
+        />
+        <Box className={classes.detailsText}>
+          <Typography component="p">
+            {description}
           </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-    </Box>
+          <Typography component="p">
+            {address}
+          </Typography>
+        </Box>
+
+
+      </CardContent>
+    </Card>
   );
 };
 
@@ -65,12 +112,16 @@ SingleExpense.propTypes = {
     date: PropTypes.string.isRequired,
     item: PropTypes.string.isRequired,
     cost: PropTypes.number.isRequired,
+    address: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,
   classes: PropTypes.shape({
     card: PropTypes.string.isRequired,
     heading: PropTypes.string.isRequired,
     secondaryHeading: PropTypes.string.isRequired,
+    map: PropTypes.string.isRequired,
+    details: PropTypes.string.isRequired,
+    detailsText: PropTypes.string.isRequired,
   }).isRequired,
 
 };
