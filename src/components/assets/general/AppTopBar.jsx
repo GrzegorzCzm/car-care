@@ -16,7 +16,7 @@ const AppTopBar = (props) => {
     <AppBar position="static" color="default">
       <Toolbar>
         <Menu onClick={toggleMenuAction} />
-        <Typography variant="title" color="inherit">
+        <Typography variant="subtitle1" color="inherit">
           Car Care
         </Typography>
       </Toolbar>

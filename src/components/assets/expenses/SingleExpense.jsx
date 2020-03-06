@@ -4,12 +4,12 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
-import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { Box } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import MapWidget from '../common/MapWidget';
 
 
 const styles = (theme) => ({
@@ -34,21 +34,6 @@ const styles = (theme) => ({
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(10),
     color: theme.palette.text.secondary,
-  },
-  map: {
-    [theme.breakpoints.down('sm')]: {
-      width: 300,
-      height: 150,
-    },
-    [theme.breakpoints.between('sm', 'md')]: {
-      width: 300,
-      height: 300,
-
-    },
-    [theme.breakpoints.up('md')]: {
-      width: 300,
-      height: 300,
-    },
   },
   details: {
     display: 'flex',
@@ -88,9 +73,7 @@ const SingleExpense = (props) => {
         subheader={`${date}  cost: ${cost}`}
       />
       <CardContent className={classes.details}>
-        <Paper
-          className={classes.map}
-        />
+        <MapWidget position={{ lat: 51.109372, lng: 16.958476 }} />
         <Box className={classes.detailsText}>
           <Typography component="p">
             {description}
@@ -119,7 +102,6 @@ SingleExpense.propTypes = {
     card: PropTypes.string.isRequired,
     heading: PropTypes.string.isRequired,
     secondaryHeading: PropTypes.string.isRequired,
-    map: PropTypes.string.isRequired,
     details: PropTypes.string.isRequired,
     detailsText: PropTypes.string.isRequired,
   }).isRequired,
