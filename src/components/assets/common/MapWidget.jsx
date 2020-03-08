@@ -1,10 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ReactDOMServer from 'react-dom/server';
+import { withStyles } from '@material-ui/core/styles';
+
+import L from 'leaflet';
 import {
-  Map, TileLayer,
+  Map, TileLayer, Marker,
 } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { withStyles } from '@material-ui/core/styles';
+
+import SimpleMarker from './mapAssets/SimpleMarker';
 
 const styles = (theme) => ({
   map: {
@@ -24,6 +29,10 @@ const styles = (theme) => ({
   },
 });
 
+const icon = L.divIcon({
+  className: 'custom-icon',
+  html: ReactDOMServer.renderToString(<SimpleMarker />),
+});
 
 const MapWidget = (props) => {
   const { position, classes } = props;
@@ -34,6 +43,7 @@ const MapWidget = (props) => {
         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
+      <Marker position={position} icon={icon} />
     </Map>
   );
 };
