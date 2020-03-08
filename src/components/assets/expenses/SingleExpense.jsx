@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
+import {
+  Card, CardHeader, CardContent, IconButton, Typography, Box, Chip,
+} from '@material-ui/core';
+
 import { withStyles } from '@material-ui/core/styles';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Box from '@material-ui/core/Box';
 import MapWidget from '../common/MapWidget';
 
 
@@ -60,9 +57,7 @@ const SingleExpense = (props) => {
     <Card key={id} className={classes.card}>
       <CardHeader
         avatar={(
-          <Avatar>
-            {item.slice(0, 1)}
-          </Avatar>
+          <Chip label={`${cost} PLN`} />
         )}
         action={(
           <IconButton aria-label="settings">
@@ -70,7 +65,7 @@ const SingleExpense = (props) => {
           </IconButton>
         )}
         title={item}
-        subheader={`${date}  cost: ${cost}`}
+        subheader={date}
       />
       <CardContent className={classes.details}>
         <MapWidget position={{ lat: 51.109372, lng: 16.958476 }} />
@@ -105,7 +100,6 @@ SingleExpense.propTypes = {
     details: PropTypes.string.isRequired,
     detailsText: PropTypes.string.isRequired,
   }).isRequired,
-
 };
 
 export default withStyles(styles)(SingleExpense);
