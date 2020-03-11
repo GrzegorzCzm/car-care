@@ -6,7 +6,7 @@ import {
 
 import { withStyles } from '@material-ui/core/styles';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import MapWidget from '../common/MapWidget';
+import MapWidgetWithStyles from '../common/MapWidget';
 
 
 const styles = (theme) => ({
@@ -50,7 +50,7 @@ const styles = (theme) => ({
 const SingleExpense = (props) => {
   const { expense, classes } = props;
   const {
-    id, date, item, cost, address, description,
+    id, date, item, cost, address, description, position,
   } = expense;
 
   return (
@@ -68,7 +68,7 @@ const SingleExpense = (props) => {
         subheader={date}
       />
       <CardContent className={classes.details}>
-        <MapWidget position={{ lat: 51.109372, lng: 16.958476 }} />
+        <MapWidgetWithStyles position={position} />
         <Box className={classes.detailsText}>
           <Typography component="p">
             {description}
@@ -91,6 +91,10 @@ SingleExpense.propTypes = {
     item: PropTypes.string.isRequired,
     cost: PropTypes.number.isRequired,
     address: PropTypes.string.isRequired,
+    position: PropTypes.shape({
+      lat: PropTypes.number.isRequired,
+      lng: PropTypes.number.isRequired,
+    }).isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,
   classes: PropTypes.shape({
