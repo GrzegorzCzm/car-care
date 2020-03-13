@@ -7,19 +7,19 @@ import {
 
 import './css/App.css';
 import Home from './components/Home';
-import Menu from './components/assets/general/Menu';
-import AppTopBar from './components/assets/general/AppTopBar';
-import Expenses from './components/assets/expenses/Expenses';
+import ConnectedMenu from './components/assets/general/Menu';
+import ConnectedAppTopBar from './components/assets/general/AppTopBar';
+import ConnectedExpenses from './components/assets/expenses/Expenses';
 import Refueling from './components/assets/refueling/Refueling';
 import Settings from './components/assets/settings/Settings';
 
 const App = () => (
   <Router>
     <div className="container">
-      <Menu />
-      <AppTopBar />
+      <ConnectedMenu />
+      <ConnectedAppTopBar />
       <Route exact path="/" component={Home} />
-      <Route exact path="/expenses" component={Expenses} />
+      <Route exact path="/expenses" component={ConnectedExpenses} />
       <Route exact path="/refueling" component={Refueling} />
       <Route exact path="/settings" component={Settings} />
     </div>

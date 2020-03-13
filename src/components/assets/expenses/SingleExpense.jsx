@@ -47,7 +47,7 @@ const styles = (theme) => ({
 });
 
 
-const SingleExpense = (props) => {
+export const SingleExpense = (props) => {
   const { expense, classes } = props;
   const {
     id, date, item, cost, address, description, position,

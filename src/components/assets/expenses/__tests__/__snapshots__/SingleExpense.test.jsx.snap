@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SingleExpense should renders correctly 1`] = `
+<SingleExpense
+  classes={
+    Object {
+      "card": "SingleExpense-card-1",
+      "details": "SingleExpense-details-4",
+      "detailsText": "SingleExpense-detailsText-5",
+      "heading": "SingleExpense-heading-2",
+      "secondaryHeading": "SingleExpense-secondaryHeading-3",
+    }
+  }
+  expense={
+    Object {
+      "address": "dummy address",
+      "cost": 35.45,
+      "date": "2018-08-19",
+      "description": "some details here",
+      "id": 0,
+      "item": "tires",
+      "position": Object {
+        "lat": 51.109372,
+        "lng": 16.958476,
+      },
+    }
+  }
+/>
+`;

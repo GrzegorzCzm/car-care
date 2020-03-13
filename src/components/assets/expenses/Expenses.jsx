@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import { withStyles } from '@material-ui/core/styles';
-import SingleExpense from './SingleExpense';
+import SingleExpenseWithStyles from './SingleExpense';
 
 const styles = () => ({
   listRoot: {
@@ -13,12 +13,12 @@ const styles = () => ({
   },
 });
 
-const Expenses = (props) => {
+export const Expenses = (props) => {
   const { classes, expenses } = props;
   return (
     <Box className={classes.listRoot}>
       { expenses.map((expense) => (
-        <SingleExpense
+        <SingleExpenseWithStyles
           key={expense.id}
           expense={expense}
         />
