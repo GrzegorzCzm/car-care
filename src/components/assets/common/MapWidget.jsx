@@ -34,7 +34,7 @@ const icon = L.divIcon({
   html: ReactDOMServer.renderToString(<SimpleMarker />),
 });
 
-const MapWidget = (props) => {
+export const MapWidget = (props) => {
   const { position, classes } = props;
   const zoom = 16;
   return (

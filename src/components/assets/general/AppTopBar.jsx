@@ -10,12 +10,12 @@ import Menu from 'mdi-material-ui/Menu';
 import { toggleMenu } from '../../../actions/navigation';
 
 
-const AppTopBar = (props) => {
+export const AppTopBar = (props) => {
   const { toggleMenuAction } = props;
   return (
     <AppBar position="static" color="default">
       <Toolbar>
-        <Menu onClick={toggleMenuAction} />
+        <Menu onClick={toggleMenuAction} className="Menu" />
         <Typography variant="subtitle1" color="inherit">
           Car Care
         </Typography>

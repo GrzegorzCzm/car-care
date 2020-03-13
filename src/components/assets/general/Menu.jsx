@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import Drawer from '@material-ui/core/Drawer';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -16,21 +16,22 @@ const menuContent = [
   { label: 'Settings', path: '/settings' },
 ];
 
-const Menu = (props) => {
+export const Menu = (props) => {
   const { navigation, toggleMenuAction } = props;
+
+  const history = useHistory();
+  const handleClick = (path) => {
+    toggleMenuAction();
+    history.push(path);
+  };
+
   return (
     <Drawer open={navigation.isMenuShown} onClose={toggleMenuAction}>
       <MenuList>
         {menuContent.map((menuItem) => (
-          <Link
-            key={menuItem.label}
-            to={menuItem.path}
-            style={{ textDecoration: 'none' }}
-          >
-            <MenuItem onClick={toggleMenuAction}>
-              {menuItem.label}
-            </MenuItem>
-          </Link>
+          <MenuItem key={menuItem.label} onClick={() => handleClick(menuItem.path)} className="MenuItem">
+            {menuItem.label}
+          </MenuItem>
         ))}
       </MenuList>
     </Drawer>

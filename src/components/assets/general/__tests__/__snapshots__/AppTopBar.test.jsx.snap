@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppTopBar should renders correctly 1`] = `
+<WithStyles(ForwardRef(AppBar))
+  color="default"
+  position="static"
+>
+  <WithStyles(ForwardRef(Toolbar))>
+    <Memo([object Object])
+      className="Menu"
+      onClick={[MockFunction]}
+    />
+    <WithStyles(ForwardRef(Typography))
+      color="inherit"
+      variant="subtitle1"
+    >
+      Car Care
+    </WithStyles(ForwardRef(Typography))>
+  </WithStyles(ForwardRef(Toolbar))>
+</WithStyles(ForwardRef(AppBar))>
+`;
