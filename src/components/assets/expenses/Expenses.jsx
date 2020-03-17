@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Box from '@material-ui/core/Box';
+
 import { withStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import List from '@material-ui/core/List';
+
 import SingleExpenseWithStyles from './SingleExpense';
+import SingleExpenseCompactWithStyles from './SingleExpenseCompact';
 
 const styles = () => ({
   listRoot: {
@@ -15,14 +21,38 @@ const styles = () => ({
 
 export const Expenses = (props) => {
   const { classes, expenses } = props;
+
+  const [isFullView, setFullView] = useState(false);
+
   return (
-    <Box className={classes.listRoot}>
-      { expenses.map((expense) => (
-        <SingleExpenseWithStyles
-          key={expense.id}
-          expense={expense}
-        />
-      ))}
+    <Box>
+      <FormControlLabel
+        control={(
+          <Switch
+            checked={isFullView}
+            onChange={() => setFullView(!isFullView)}
+            value="Switch"
+            color="primary"
+          />
+    )}
+        label="Full view"
+      />
+      <Box className={classes.listRoot}>
+        { isFullView
+          ? expenses.map((expense) => (
+            <SingleExpenseWithStyles
+              key={expense.id}
+              expense={expense}
+            />
+          ))
+          : (
+            <List className={classes.listRoot}>
+              {expenses.map((expense) => (
+                <SingleExpenseCompactWithStyles expense={expense} key={expense.id} />
+              ))}
+            </List>
+          )}
+      </Box>
     </Box>
   );
 };
