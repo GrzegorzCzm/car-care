@@ -17,6 +17,10 @@ const styles = () => ({
     justifyContent: 'center',
     flexDirection: 'column',
   },
+  toggleButton: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
 });
 
 export const Expenses = (props) => {
@@ -26,17 +30,19 @@ export const Expenses = (props) => {
 
   return (
     <Box>
-      <FormControlLabel
-        control={(
-          <Switch
-            checked={isFullView}
-            onChange={() => setFullView(!isFullView)}
-            value="Switch"
-            color="primary"
-          />
+      <Box className={classes.toggleButton}>
+        <FormControlLabel
+          control={(
+            <Switch
+              checked={isFullView}
+              onChange={() => setFullView(!isFullView)}
+              value="Switch"
+              color="primary"
+            />
     )}
-        label="Full view"
-      />
+          label="Full view"
+        />
+      </Box>
       <Box className={classes.listRoot}>
         { isFullView
           ? expenses.map((expense) => (
@@ -64,6 +70,7 @@ const mapStateToProps = (state) => ({
 Expenses.propTypes = {
   classes: PropTypes.shape({
     listRoot: PropTypes.string.isRequired,
+    toggleButton: PropTypes.string.isRequired,
   }).isRequired,
   expenses: PropTypes.arrayOf(
     PropTypes.shape({

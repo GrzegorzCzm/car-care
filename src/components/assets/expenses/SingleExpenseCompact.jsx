@@ -11,7 +11,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Typography from '@material-ui/core/Typography';
 
 const styles = (theme) => ({
-  item: {
+  itemWrapper: {
     margin: 10,
     [theme.breakpoints.down('sm')]: {
       width: '100%',
@@ -24,37 +24,47 @@ const styles = (theme) => ({
     },
     alignSelf: 'center',
   },
+  itemHeaderWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+  },
+  secondaryHeading: {
+    fontSize: theme.typography.pxToRem(12),
+    color: theme.palette.text.secondary,
+  },
+  itemContent: {
+    marginLeft: 10,
+  },
 });
 
 export const SingleExpenseCompact = (props) => {
   const { expense, classes } = props;
   const {
-    id, date, item, cost, address, description,
+    id, date, item, cost, description,
   } = expense;
 
   return (
-    <Box key={id} className={classes.item}>
-      <ListItem alignItems="flex-start" key={id}>
+    <Box key={id} className={classes.itemWrapper}>
+      <ListItem key={id}>
         <ListItemAvatar>
           <Chip label={`${cost} PLN`} />
         </ListItemAvatar>
         <ListItemText
-          primary={item}
-          secondary={(
-            <>
-              <Typography
-                component="span"
-                variant="body2"
-                color="textPrimary"
-              >
-                {date}
-              </Typography>
-              { `${address} || ${description}`}
-            </>
-              )}
+          className={classes.itemContent}
+          primary={(
+            <Box className={classes.itemHeaderWrapper}>
+              <Typography className={classes.heading}>{item}</Typography>
+              <Typography className={classes.secondaryHeading}>{date}</Typography>
+            </Box>
+)}
+          secondary={description}
         />
       </ListItem>
-      <Divider variant="inset" component="li" />
+      <Divider component="li" />
     </Box>
   );
 };
@@ -65,11 +75,15 @@ SingleExpenseCompact.propTypes = {
     date: PropTypes.string.isRequired,
     item: PropTypes.string.isRequired,
     cost: PropTypes.number.isRequired,
-    address: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,
   classes: PropTypes.shape({
-    item: PropTypes.string.isRequired,
+    itemWrapper: PropTypes.string.isRequired,
+    itemHeaderWrapper: PropTypes.string.isRequired,
+    itemContent: PropTypes.string.isRequired,
+    heading: PropTypes.string.isRequired,
+    secondaryHeading: PropTypes.string.isRequired,
+
   }).isRequired,
 };
 
