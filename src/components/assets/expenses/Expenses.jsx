@@ -32,6 +32,7 @@ export const Expenses = (props) => {
     <Box>
       <Box className={classes.toggleButton}>
         <FormControlLabel
+          className="switch-button"
           control={(
             <Switch
               checked={isFullView}

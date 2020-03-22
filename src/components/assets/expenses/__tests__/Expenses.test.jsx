@@ -13,11 +13,20 @@ describe('Expenses', () => {
     expenses: expensesData,
     classes: {
       listRoot: 'expenses-list',
+      toggleButton: 'view-switch',
     },
   };
 
-  it('should renders correctly', () => {
+  it('should renders correctly with compact list', () => {
     const wrapper = shallow(<Expenses {...props} />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('should renders correctly with full list', () => {
+    const wrapper = shallow(<Expenses {...props} />);
+    const switchButtonControlProps = wrapper.find('.switch-button').props('control').control.props;
+    switchButtonControlProps.onChange();
+
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -27,7 +36,7 @@ describe('Expenses', () => {
       expenses: expensesData,
     });
 
-    const expectedClasses = { listRoot: 'Expenses-listRoot-1' };
+    const expectedClasses = { listRoot: 'Expenses-listRoot-1', toggleButton: 'Expenses-toggleButton-2' };
 
     const wrapper = mount(
       <Provider store={store}>
@@ -37,5 +46,14 @@ describe('Expenses', () => {
 
     expect(wrapper.find('Expenses').prop('classes')).toEqual(expectedClasses);
     expect(wrapper.find('Provider').prop('store').getState().expenses.length).toBe(3);
+  });
+
+  it('should change isFullView when setFullView clicked', () => {
+    const wrapper = shallow(<Expenses {...props} />);
+    const switchButtonControlProps = wrapper.find('.switch-button').props('control').control.props;
+
+    expect(switchButtonControlProps.checked).toBe(false);
+    switchButtonControlProps.onChange();
+    expect(switchButtonControlProps.checked).toBe(false);
   });
 });
