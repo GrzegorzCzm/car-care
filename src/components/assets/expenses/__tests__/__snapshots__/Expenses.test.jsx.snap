@@ -1,59 +1,157 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Expenses should renders correctly 1`] = `
-<Styled(MuiBox)
-  className="expenses-list"
->
-  <WithStyles(SingleExpense)
-    expense={
-      Object {
-        "address": "dummy address",
-        "cost": 35.45,
-        "date": "2018-08-19",
-        "description": "some details here",
-        "id": 0,
-        "item": "tires",
-        "position": Object {
-          "lat": 51.109372,
-          "lng": 16.958476,
-        },
+exports[`Expenses should renders correctly with compact list 1`] = `
+<Styled(MuiBox)>
+  <Styled(MuiBox)
+    className="view-switch"
+  >
+    <WithStyles(ForwardRef(FormControlLabel))
+      className="switch-button"
+      control={
+        <ForwardRef(WithStyles)
+          checked={false}
+          color="primary"
+          onChange={[Function]}
+          value="Switch"
+        />
       }
-    }
-    key="0"
-  />
-  <WithStyles(SingleExpense)
-    expense={
-      Object {
-        "address": "dummy second address",
-        "cost": 85,
-        "date": "2018-08-13",
-        "description": "some more details here",
-        "id": 1,
-        "item": "wheels",
-        "position": Object {
-          "lat": 51.109372,
-          "lng": 16.958476,
-        },
+      label="Full view"
+    />
+  </Styled(MuiBox)>
+  <Styled(MuiBox)
+    className="expenses-list"
+  >
+    <WithStyles(ForwardRef(List))
+      className="expenses-list"
+    >
+      <WithStyles(SingleExpenseCompact)
+        expense={
+          Object {
+            "address": "dummy address",
+            "cost": 35.45,
+            "date": "2018-08-19",
+            "description": "some details here",
+            "id": 0,
+            "item": "tires",
+            "position": Object {
+              "lat": 51.109372,
+              "lng": 16.958476,
+            },
+          }
+        }
+        key="0"
+      />
+      <WithStyles(SingleExpenseCompact)
+        expense={
+          Object {
+            "address": "dummy second address",
+            "cost": 85,
+            "date": "2018-08-13",
+            "description": "some more details here",
+            "id": 1,
+            "item": "some long name here",
+            "position": Object {
+              "lat": 51.109372,
+              "lng": 16.958476,
+            },
+          }
+        }
+        key="1"
+      />
+      <WithStyles(SingleExpenseCompact)
+        expense={
+          Object {
+            "address": "dummy third address",
+            "cost": 1450.65,
+            "date": "2018-07-10",
+            "description": "some more details here",
+            "id": 2,
+            "item": "wheels",
+            "position": Object {
+              "lat": 51.109372,
+              "lng": 16.958476,
+            },
+          }
+        }
+        key="2"
+      />
+    </WithStyles(ForwardRef(List))>
+  </Styled(MuiBox)>
+</Styled(MuiBox)>
+`;
+
+exports[`Expenses should renders correctly with full list 1`] = `
+<Styled(MuiBox)>
+  <Styled(MuiBox)
+    className="view-switch"
+  >
+    <WithStyles(ForwardRef(FormControlLabel))
+      className="switch-button"
+      control={
+        <ForwardRef(WithStyles)
+          checked={true}
+          color="primary"
+          onChange={[Function]}
+          value="Switch"
+        />
       }
-    }
-    key="1"
-  />
-  <WithStyles(SingleExpense)
-    expense={
-      Object {
-        "address": "dummy third address",
-        "cost": 1450.65,
-        "date": "2018-07-10",
-        "description": "some more details here",
-        "id": 2,
-        "item": "wheels",
-        "position": Object {
-          "lat": 51.109372,
-          "lng": 16.958476,
-        },
+      label="Full view"
+    />
+  </Styled(MuiBox)>
+  <Styled(MuiBox)
+    className="expenses-list"
+  >
+    <WithStyles(SingleExpense)
+      expense={
+        Object {
+          "address": "dummy address",
+          "cost": 35.45,
+          "date": "2018-08-19",
+          "description": "some details here",
+          "id": 0,
+          "item": "tires",
+          "position": Object {
+            "lat": 51.109372,
+            "lng": 16.958476,
+          },
+        }
       }
-    }
-    key="2"
-  />
+      key="0"
+    />
+    <WithStyles(SingleExpense)
+      expense={
+        Object {
+          "address": "dummy second address",
+          "cost": 85,
+          "date": "2018-08-13",
+          "description": "some more details here",
+          "id": 1,
+          "item": "some long name here",
+          "position": Object {
+            "lat": 51.109372,
+            "lng": 16.958476,
+          },
+        }
+      }
+      key="1"
+    />
+    <WithStyles(SingleExpense)
+      expense={
+        Object {
+          "address": "dummy third address",
+          "cost": 1450.65,
+          "date": "2018-07-10",
+          "description": "some more details here",
+          "id": 2,
+          "item": "wheels",
+          "position": Object {
+            "lat": 51.109372,
+            "lng": 16.958476,
+          },
+        }
+      }
+      key="2"
+    />
+  </Styled(MuiBox)>
 </Styled(MuiBox)>
 `;

@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
+
 import {
   Card, CardHeader, CardContent, IconButton, Typography, Box, Chip,
 } from '@material-ui/core';
-
 import { withStyles } from '@material-ui/core/styles';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import MapWidgetWithStyles from '../common/MapWidget';
+import Spinner from '../common/Spinner';
+
+const MapWidgetWithStyles = lazy(() => new Promise((resolve) => resolve(import('./../common/MapWidget'))));
 
 
 const styles = (theme) => ({
@@ -26,7 +28,6 @@ const styles = (theme) => ({
   heading: {
     fontSize: theme.typography.pxToRem(15),
     flexBasis: '66.66%',
-    flexShrink: 0,
   },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(10),
@@ -68,7 +69,9 @@ export const SingleExpense = (props) => {
         subheader={date}
       />
       <CardContent className={classes.details}>
+        <Suspense fallback={<Spinner/>} >
         <MapWidgetWithStyles position={position} />
+        </Suspense>
         <Box className={classes.detailsText}>
           <Typography component="p">
             {description}
