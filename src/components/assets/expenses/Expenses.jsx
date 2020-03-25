@@ -12,21 +12,28 @@ import SingleExpenseCompactWithStyles from './SingleExpenseCompact';
 import { sortingOrder, getSortedItems } from '../../../utils/sortUtils';
 import SortingWidgetWithStyles from '../common/SortingWidget';
 
-const styles = () => ({
+const styles = (theme) => ({
   listRoot: {
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
   },
-  toggleButton: {
+  paramLine: {
+    alignSelf: 'center',
     display: 'flex',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    margin: 10,
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    },
+    [theme.breakpoints.between('sm', 'md')]: {
+      width: 600,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 600,
+    },
   },
-  // paramLine: {
-  //   display: 'flex',
-  //   justifyContent: 'center',
-  //   flexDirection: 'row',
-  // },
 });
 
 export const Expenses = (props) => {
@@ -36,22 +43,24 @@ export const Expenses = (props) => {
   const [sortParams, setSortParams] = useState({ field: 'date', type: 'date', order: sortingOrder.DESC });
 
   return (
-    <Box>
-      <Box className={classes.toggleButton}>
-        <FormControlLabel
-          className="switch-button"
-          control={(
-            <Switch
-              checked={isFullView}
-              onChange={() => setFullView(!isFullView)}
-              value="Switch"
-              color="primary"
-            />
+    <Box className={classes.listRoot}>
+      <Box className={classes.paramLine}>
+        <SortingWidgetWithStyles sortParams={sortParams} setSortParams={setSortParams} />
+        <Box>
+          <FormControlLabel
+            className="switch-button"
+            control={(
+              <Switch
+                checked={isFullView}
+                onChange={() => setFullView(!isFullView)}
+                value="Switch"
+                color="primary"
+              />
     )}
-          label="Full view"
-        />
+            label="Full view"
+          />
+        </Box>
       </Box>
-      <SortingWidgetWithStyles sortParams={sortParams} setSortParams={setSortParams} />
       <Box className={classes.listRoot}>
         { isFullView
           ? getSortedItems({ items: expenses, sortParams }).map((expense) => (
@@ -80,8 +89,7 @@ const mapStateToProps = (state) => ({
 Expenses.propTypes = {
   classes: PropTypes.shape({
     listRoot: PropTypes.string.isRequired,
-    toggleButton: PropTypes.string.isRequired,
-    // paramLine: PropTypes.string.isRequired,
+    paramLine: PropTypes.string.isRequired,
   }).isRequired,
   expenses: PropTypes.arrayOf(
     PropTypes.shape({
