@@ -8,8 +8,8 @@ import { withStyles } from '@material-ui/core/styles';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Spinner from '../common/Spinner';
 
+/* eslint-disable-next-line */
 const MapWidgetWithStyles = lazy(() => new Promise((resolve) => resolve(import('./../common/MapWidget'))));
-
 
 const styles = (theme) => ({
   card: {
