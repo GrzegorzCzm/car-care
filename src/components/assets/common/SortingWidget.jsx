@@ -32,6 +32,15 @@ export const SortingWidget = (props) => {
     { name: 'address', type: 'text' },
   ];
 
+  const changeSortingField = (event) => {
+    const name = event.target.value;
+    setSortParams({
+      ...sortParams,
+      field: name,
+      type: fieldsToTypeMapping.find((menuItem) => menuItem.name === name).type,
+    });
+  };
+
   return (
     <Box className={classes.paramLine}>
       <IconButton aria-label="DESC" size="small" onClick={() => setSortParams({ ...sortParams, order: sortingOrder.DESC })}>
@@ -45,14 +54,7 @@ export const SortingWidget = (props) => {
           labelId="sortingFieldSelect"
           id="sortingFieldSelect"
           value={field}
-          onChange={(event) => {
-            const name = event.target.value;
-            setSortParams({
-              ...sortParams,
-              field: name,
-              type: fieldsToTypeMapping.find((menuItem) => menuItem.name === name).type,
-            });
-          }}
+          onChange={changeSortingField}
         >
           {
           fieldsToTypeMapping.map((menuItem) => (
