@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SortingWidget should renders correctly 1`] = `
+<Styled(MuiBox)
+  className="expenses-paramLine"
+>
+  <WithStyles(ForwardRef(IconButton))
+    aria-label="DESC"
+    onClick={[Function]}
+    size="small"
+  >
+    <KeyboardArrowDownIcon
+      color="action"
+      fontSize="large"
+    />
+  </WithStyles(ForwardRef(IconButton))>
+  <WithStyles(ForwardRef(IconButton))
+    aria-label="ASC"
+    onClick={[Function]}
+    size="small"
+  >
+    <KeyboardArrowUpIcon
+      color="disabled"
+      fontSize="large"
+    />
+  </WithStyles(ForwardRef(IconButton))>
+  <WithStyles(ForwardRef(FormControl))>
+    <WithStyles(ForwardRef(Select))
+      id="sortingFieldSelect"
+      labelId="sortingFieldSelect"
+      onChange={[Function]}
+      value="data"
+    >
+      <WithStyles(ForwardRef(MenuItem))
+        key="date"
+        value="date"
+      >
+        date
+      </WithStyles(ForwardRef(MenuItem))>
+      <WithStyles(ForwardRef(MenuItem))
+        key="item"
+        value="item"
+      >
+        item
+      </WithStyles(ForwardRef(MenuItem))>
+      <WithStyles(ForwardRef(MenuItem))
+        key="cost"
+        value="cost"
+      >
+        cost
+      </WithStyles(ForwardRef(MenuItem))>
+      <WithStyles(ForwardRef(MenuItem))
+        key="address"
+        value="address"
+      >
+        address
+      </WithStyles(ForwardRef(MenuItem))>
+    </WithStyles(ForwardRef(Select))>
+  </WithStyles(ForwardRef(FormControl))>
+</Styled(MuiBox)>
+`;

@@ -13,7 +13,7 @@ describe('Expenses', () => {
     expenses: expensesData,
     classes: {
       listRoot: 'expenses-list',
-      toggleButton: 'view-switch',
+      paramLine: 'expenses-paramLine',
     },
   };
 
@@ -36,7 +36,7 @@ describe('Expenses', () => {
       expenses: expensesData,
     });
 
-    const expectedClasses = { listRoot: 'Expenses-listRoot-1', toggleButton: 'Expenses-toggleButton-2' };
+    const expectedClasses = { listRoot: 'Expenses-listRoot-1', paramLine: 'Expenses-paramLine-2' };
 
     const wrapper = mount(
       <Provider store={store}>

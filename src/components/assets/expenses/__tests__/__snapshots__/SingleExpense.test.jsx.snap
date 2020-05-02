@@ -15,7 +15,7 @@ exports[`SingleExpense should renders correctly 1`] = `
     Object {
       "address": "dummy address",
       "cost": 35.45,
-      "date": "2018-08-19",
+      "date": "2018-04-19",
       "description": "some details here",
       "id": 0,
       "item": "tires",

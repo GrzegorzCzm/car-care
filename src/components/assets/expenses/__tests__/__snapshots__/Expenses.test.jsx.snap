@@ -1,22 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Expenses should renders correctly with compact list 1`] = `
-<Styled(MuiBox)>
+<Styled(MuiBox)
+  className="expenses-list"
+>
   <Styled(MuiBox)
-    className="view-switch"
+    className="expenses-paramLine"
   >
-    <WithStyles(ForwardRef(FormControlLabel))
-      className="switch-button"
-      control={
-        <ForwardRef(WithStyles)
-          checked={false}
-          color="primary"
-          onChange={[Function]}
-          value="Switch"
-        />
+    <WithStyles(SortingWidget)
+      setSortParams={[Function]}
+      sortParams={
+        Object {
+          "field": "date",
+          "order": "DESC",
+          "type": "date",
+        }
       }
-      label="Full view"
     />
+    <Styled(MuiBox)>
+      <WithStyles(ForwardRef(FormControlLabel))
+        className="switch-button"
+        control={
+          <ForwardRef(WithStyles)
+            checked={false}
+            color="primary"
+            onChange={[Function]}
+            value="Switch"
+          />
+        }
+        label="Full view"
+      />
+    </Styled(MuiBox)>
   </Styled(MuiBox)>
   <Styled(MuiBox)
     className="expenses-list"
@@ -27,19 +41,19 @@ exports[`Expenses should renders correctly with compact list 1`] = `
       <WithStyles(SingleExpenseCompact)
         expense={
           Object {
-            "address": "dummy address",
-            "cost": 35.45,
-            "date": "2018-08-19",
-            "description": "some details here",
-            "id": 0,
-            "item": "tires",
+            "address": "dummy third address",
+            "cost": 1450.65,
+            "date": "2019-07-10",
+            "description": "some more details here",
+            "id": 2,
+            "item": "wheels",
             "position": Object {
               "lat": 51.109372,
               "lng": 16.958476,
             },
           }
         }
-        key="0"
+        key="2"
       />
       <WithStyles(SingleExpenseCompact)
         expense={
@@ -61,19 +75,19 @@ exports[`Expenses should renders correctly with compact list 1`] = `
       <WithStyles(SingleExpenseCompact)
         expense={
           Object {
-            "address": "dummy third address",
-            "cost": 1450.65,
-            "date": "2018-07-10",
-            "description": "some more details here",
-            "id": 2,
-            "item": "wheels",
+            "address": "dummy address",
+            "cost": 35.45,
+            "date": "2018-04-19",
+            "description": "some details here",
+            "id": 0,
+            "item": "tires",
             "position": Object {
               "lat": 51.109372,
               "lng": 16.958476,
             },
           }
         }
-        key="2"
+        key="0"
       />
     </WithStyles(ForwardRef(List))>
   </Styled(MuiBox)>
@@ -81,22 +95,36 @@ exports[`Expenses should renders correctly with compact list 1`] = `
 `;
 
 exports[`Expenses should renders correctly with full list 1`] = `
-<Styled(MuiBox)>
+<Styled(MuiBox)
+  className="expenses-list"
+>
   <Styled(MuiBox)
-    className="view-switch"
+    className="expenses-paramLine"
   >
-    <WithStyles(ForwardRef(FormControlLabel))
-      className="switch-button"
-      control={
-        <ForwardRef(WithStyles)
-          checked={true}
-          color="primary"
-          onChange={[Function]}
-          value="Switch"
-        />
+    <WithStyles(SortingWidget)
+      setSortParams={[Function]}
+      sortParams={
+        Object {
+          "field": "date",
+          "order": "DESC",
+          "type": "date",
+        }
       }
-      label="Full view"
     />
+    <Styled(MuiBox)>
+      <WithStyles(ForwardRef(FormControlLabel))
+        className="switch-button"
+        control={
+          <ForwardRef(WithStyles)
+            checked={true}
+            color="primary"
+            onChange={[Function]}
+            value="Switch"
+          />
+        }
+        label="Full view"
+      />
+    </Styled(MuiBox)>
   </Styled(MuiBox)>
   <Styled(MuiBox)
     className="expenses-list"
@@ -104,19 +132,19 @@ exports[`Expenses should renders correctly with full list 1`] = `
     <WithStyles(SingleExpense)
       expense={
         Object {
-          "address": "dummy address",
-          "cost": 35.45,
-          "date": "2018-08-19",
-          "description": "some details here",
-          "id": 0,
-          "item": "tires",
+          "address": "dummy third address",
+          "cost": 1450.65,
+          "date": "2019-07-10",
+          "description": "some more details here",
+          "id": 2,
+          "item": "wheels",
           "position": Object {
             "lat": 51.109372,
             "lng": 16.958476,
           },
         }
       }
-      key="0"
+      key="2"
     />
     <WithStyles(SingleExpense)
       expense={
@@ -138,19 +166,19 @@ exports[`Expenses should renders correctly with full list 1`] = `
     <WithStyles(SingleExpense)
       expense={
         Object {
-          "address": "dummy third address",
-          "cost": 1450.65,
-          "date": "2018-07-10",
-          "description": "some more details here",
-          "id": 2,
-          "item": "wheels",
+          "address": "dummy address",
+          "cost": 35.45,
+          "date": "2018-04-19",
+          "description": "some details here",
+          "id": 0,
+          "item": "tires",
           "position": Object {
             "lat": 51.109372,
             "lng": 16.958476,
           },
         }
       }
-      key="2"
+      key="0"
     />
   </Styled(MuiBox)>
 </Styled(MuiBox)>
